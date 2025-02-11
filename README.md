@@ -23,3 +23,5 @@ npx electron-packager . siem-board --platform=linux --arch=x64
 cd siem-board-linux-x64
 ./siem-board
 ```
+
+Use `--platform=win32` for windows.
