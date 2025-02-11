@@ -3,13 +3,19 @@ const path = require('path');
 const fs = require('fs');
 
 
-
 app.commandLine.appendSwitch('ignore-certificate-errors');
 app.disableHardwareAcceleration();
 
 
-let config = { thehive: "http://192.168.5.249:9000", wazuh: "https://192.168.5.252", proxmox: "https://192.168.5.253:8006", n8n: "http://192.168.5.251:5678" };
+let config = { thehive: "", wazuh: "", proxmox: "", n8n: "" };
 
+try {
+    const configPath = path.join(__dirname, 'config.json');
+    const data = fs.readFileSync(configPath, 'utf-8');
+    config = JSON.parse(data);
+} catch (error) {
+    console.error('Erreur de lecture du fichier config.json:', error);
+}
 
 app.whenReady().then(() => {
 

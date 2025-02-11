@@ -2,6 +2,9 @@
 
 This small app displays each useful web ui of our SOC.
 
+## Config
+The `config.json` must contains the @ip of your dashboards. 
+
 ## Usage
 
 Install required dependencies:
