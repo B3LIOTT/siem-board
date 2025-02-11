@@ -7,7 +7,7 @@ app.commandLine.appendSwitch('ignore-certificate-errors');
 app.disableHardwareAcceleration();
 
 
-let config = { thehive: "", wazuh: "", proxmox: "", n8n: "" };
+let config = { thehive: "", wazuh: "", proxmox: "", n8n: "", cortex: "" };
 
 try {
     const configPath = path.join(__dirname, 'config.json');
@@ -26,7 +26,8 @@ app.whenReady().then(() => {
         .replace("{{thehive}}", config.thehive)
         .replace("{{wazuh}}", config.wazuh)
         .replace("{{proxmox}}", config.proxmox)
-        .replace("{{n8n}}", config.n8n);;
+        .replace("{{n8n}}", config.n8n)
+        .replace("{{cortex}}", config.cortex);
 
     fs.writeFileSync(path.join(__dirname, 'index.html'), templateHtml);
 

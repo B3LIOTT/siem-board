@@ -111,7 +111,6 @@
 </head>
 <body>
     <header>Dashboards IN'SOC</header>
-
     <div class="carousel-container" id="carousel">
         <div class="iframe-container" id="thehive">
             <webview 
@@ -141,6 +140,13 @@
                 allowpopups>
             </webview>
         </div>
+        <div class="iframe-container" id="cortex">
+            <webview 
+                src="{{cortex}}" 
+                style="width: 100%; height: 100%;" 
+                allowpopups>
+            </webview>
+        </div>
     </div>
 
     <!-- Menu de navigation -->
@@ -149,6 +155,7 @@
         <button onclick="scrollToIframe('wazuh')">Wazuh</button>
         <button onclick="scrollToIframe('proxmox')">Proxmox</button>
         <button onclick="scrollToIframe('n8n')">n8n</button>
+        <button onclick="scrollToIframe('cortex')">Cortex</button>
     </div>
 
     <script>
