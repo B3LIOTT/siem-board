@@ -1,7 +1,7 @@
 {
   "name": "test",
   "version": "1.0.0",
-  "description": "",
+  "description": "This small app displays each useful web ui of our SOC.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,13 @@
   },
   "devDependencies": {
     "electron-packager": "^17.1.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B3LIOTT/siem-board.git"
+  },
+  "bugs": {
+    "url": "https://github.com/B3LIOTT/siem-board/issues"
+  },
+  "homepage": "https://github.com/B3LIOTT/siem-board#readme"
 }

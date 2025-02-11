@@ -7,8 +7,9 @@ The `config.json` must contains the @ip of your dashboards.
 
 ## Usage
 
-Install required dependencies:
+Init project and install required dependencies:
 ```bash
+npm init -y
 npm install electron
 ```
 
