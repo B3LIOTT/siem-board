@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards IN'SOC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: rgb(79, 77, 80);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* Barre de titre moderne */
+        header {
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgb(228, 38, 24);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            width: 100%;
+            max-width: 100%;
+            height: 95vh; /* Moins haut pour laisser de la place au menu */
+            scroll-snap-type: x mandatory;
+            padding-top: 70px; /* Décalage pour le header */
+            scroll-behavior: smooth;
+            padding-left: 5vw;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .iframe-container {
+            flex-shrink: 0;
+            width: 100vw;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            background: #2a2a3b;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            overflow: hidden;
+        }
+        webview {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+        /* Menu de navigation */
+        .menu {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .menu button {
+            background: rgb(228, 38, 24);
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .menu button:hover {
+            background: rgb(155, 10, 0);
+            transform: scale(1.1);
+        }
+        @media (max-width: 800px) {
+            .iframe-container {
+                width: 95vw;
+                height: 70vh;
+            }
+            .carousel-container {
+                padding-left: 2vw;
+            }
+            .menu {
+                bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Dashboards IN'SOC</header>
+
+    <div class="carousel-container" id="carousel">
+        <div class="iframe-container" id="thehive">
+            <webview 
+                src="{{thehive}}" 
+                style="width: 100%; height: 100%;" 
+                allowpopups>
+            </webview>
+        </div>
+        <div class="iframe-container" id="wazuh">
+            <webview 
+                src="{{wazuh}}" 
+                style="width: 100%; height: 100%;" 
+                allowpopups>
+            </webview>
+        </div>
+        <div class="iframe-container" id="proxmox">
+            <webview 
+                src="{{proxmox}}" 
+                style="width: 100%; height: 100%;" 
+                allowpopups>
+            </webview>
+        </div>
+        <div class="iframe-container" id="n8n">
+            <webview 
+                src="{{n8n}}" 
+                style="width: 100%; height: 100%;" 
+                allowpopups>
+            </webview>
+        </div>
+    </div>
+
+    <!-- Menu de navigation -->
+    <div class="menu">
+        <button onclick="scrollToIframe('thehive')">TheHive</button>
+        <button onclick="scrollToIframe('wazuh')">Wazuh</button>
+        <button onclick="scrollToIframe('proxmox')">Proxmox</button>
+        <button onclick="scrollToIframe('n8n')">n8n</button>
+    </div>
+
+    <script>
+        function scrollToIframe(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }
+    </script>
+</body>
+</html>
