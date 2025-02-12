@@ -20,29 +20,14 @@
             height: 100vh;
             overflow: hidden;
         }
-        /* Barre de titre moderne */
-        header {
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            background: rgb(228, 38, 24);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
         .carousel-container {
             display: flex;
             overflow-x: auto;
             width: 100%;
-            max-width: 100%;
-            height: 95vh; /* Moins haut pour laisser de la place au menu */
+            height: calc(100vh - 70px); /* Espace pour les boutons */
             scroll-snap-type: x mandatory;
-            padding-top: 70px; /* Décalage pour le header */
             scroll-behavior: smooth;
-            padding-left: 5vw;
+            padding: 10px 5vw;
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
@@ -50,7 +35,7 @@
         .iframe-container {
             flex-shrink: 0;
             width: 100vw;
-            height: 80vh;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -58,7 +43,7 @@
             background: #2a2a3b;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin: 20px;
+            margin: 0 20px;
             overflow: hidden;
         }
         webview {
@@ -67,7 +52,6 @@
             border: none;
             border-radius: 12px;
         }
-        /* Menu de navigation */
         .menu {
             position: fixed;
             bottom: 10px;
@@ -79,6 +63,7 @@
             padding: 10px 15px;
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
         }
         .menu button {
             background: rgb(228, 38, 24);
@@ -98,10 +83,10 @@
         @media (max-width: 800px) {
             .iframe-container {
                 width: 95vw;
-                height: 70vh;
+                margin: 0 10px;
             }
             .carousel-container {
-                padding-left: 2vw;
+                padding: 10px 2vw;
             }
             .menu {
                 bottom: 5px;
@@ -110,7 +95,6 @@
     </style>
 </head>
 <body>
-    <header>Dashboards IN'SOC</header>
     <div class="carousel-container" id="carousel">
         <div class="iframe-container" id="thehive">
             <webview 
@@ -149,7 +133,6 @@
         </div>
     </div>
 
-    <!-- Menu de navigation -->
     <div class="menu">
         <button onclick="scrollToIframe('thehive')">TheHive</button>
         <button onclick="scrollToIframe('wazuh')">Wazuh</button>
